@@ -4,6 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Proovio — Collecte de preuves terrain</title>
+<!-- SDK Supabase chargé en différé pour ne pas bloquer l'interface -->
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <!-- Aucune ressource externe bloquante : l'interface s'affiche même sans connexion.
      Carte / PDF / Excel sont chargés en arrière-plan si internet est disponible (voir loadOptionalLibs). -->
 <style>
@@ -1169,52 +1171,66 @@ html,body{background:var(--bg);color:var(--text)}
      avec `node --test` sans navigateur (voir CLAUDE.md). Fichier local, aucune
      dépendance réseau : compatible avec l'ouverture directe en file://. -->
 <script src="import-logic.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // SUPABASE CLIENT & SYNC ENGINE
+// Chargé de façon non-bloquante : si Supabase n'est pas disponible,
+// l'application fonctionne normalement en mode local-only.
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const SUPABASE_URL = 'https://ljiubfduzpxkgugomhri.supabase.co'; // À REMPLACER PAR VOTRE URL SUPABASE
-const SUPABASE_KEY = 'sb_publishable_kgW_qz5MwIba-G6Gv5cadQ_EbMR1FYY'; // À REMPLACER PAR VOTRE CLÉ PUBLIQUE (ANON KEY)
-let supabase = null;
-try {
-  if (window.supabase && SUPABASE_URL !== 'VOTRE_SUPABASE_URL_ICI') {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  }
-} catch(e) { console.warn("Erreur init Supabase", e); }
+const SUPABASE_URL = 'https://ljiubfduzpxkgugomhri.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_kgW_qz5MwIba-G6Gv5cadQ_EbMR1FYY';
+
+// sbClient est distinct de window.supabase (le SDK) pour éviter tout conflit
+let sbClient = null;
 
 const SYNC_TABLES = ['installations', 'campagnes', 'clients', 'installateurs', 'import_batches', 'column_mappings'];
 
+// Initialisation différée : le SDK est chargé de façon asynchrone
+function initSupabase() {
+  try {
+    // Le SDK CDN expose window.supabase.createClient
+    const factory = (window.supabase && window.supabase.createClient)
+      ? window.supabase.createClient
+      : null;
+    if (factory) {
+      sbClient = factory(SUPABASE_URL, SUPABASE_KEY);
+      console.log('[Proovio] Supabase connecté ✓');
+    }
+  } catch(e) {
+    console.warn('[Proovio] Supabase non disponible, mode local activé.', e);
+  }
+}
+
 async function syncPull() {
-  if (!supabase) return;
+  if (!sbClient) return;
   try {
     for (const table of SYNC_TABLES) {
-      const { data, error } = await supabase.from(table).select('*');
-      if (!error && data) {
+      const { data, error } = await sbClient.from(table).select('*');
+      if (!error && data && data.length > 0) {
         localStorage.setItem('md_' + table, JSON.stringify(data));
       }
     }
-    console.log("Synchronisation descendante terminée.");
+    console.log('[Proovio] Synchronisation descendante terminée ✓');
     // Re-rendre l'interface pour prendre en compte les modifications
     if (typeof renderInstallations === 'function') renderInstallations();
     if (typeof renderClients === 'function') renderClients();
     if (typeof renderCampagnes === 'function') renderCampagnes();
     if (typeof renderInstallateurs === 'function') renderInstallateurs();
   } catch (e) {
-    console.error('Erreur Sync Pull', e);
+    console.error('[Proovio] Erreur Sync Pull', e);
   }
 }
 
 async function syncPush(table, item, isDelete = false) {
-  if (!supabase || !SYNC_TABLES.includes(table)) return;
+  if (!sbClient || !SYNC_TABLES.includes(table)) return;
   try {
     if (isDelete) {
-      await supabase.from(table).delete().eq('id', typeof item === 'object' ? item.id : item);
+      await sbClient.from(table).delete().eq('id', typeof item === 'object' ? item.id : item);
     } else {
-      await supabase.from(table).upsert(item);
+      await sbClient.from(table).upsert(item);
     }
   } catch (e) {
-    console.error('Erreur Sync Push', e);
+    console.error('[Proovio] Erreur Sync Push', e);
   }
 }
 
@@ -1237,11 +1253,6 @@ const LS = {
   }
 };
 const uid = () => Math.random().toString(36).slice(2,10).toUpperCase();
-
-// Déclenchement du pull initial au démarrage de l'app (après 1 seconde pour laisser l'UI s'afficher)
-if (supabase) {
-  setTimeout(syncPull, 1000);
-}
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // LIBRAIRIES OPTIONNELLES (carte / PDF / Excel)
@@ -1438,6 +1449,9 @@ function startApp() {
   const first = (ROLE_VIEWS[currentRole()] || ['carte'])[0];
   nav(first);
   updateOfflineBanner();
+  // Initialiser Supabase (le SDK est déjà chargé à ce stade) puis synchroniser
+  initSupabase();
+  setTimeout(syncPull, 800);
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
