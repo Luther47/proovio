@@ -413,7 +413,9 @@ tbody tr:hover{background:#FAFAFA}
 .login-reset{background:none;border:none;color:var(--muted);font-size:10.5px;cursor:pointer;font-family:inherit;text-decoration:underline;margin-top:10px;display:block;width:100%;text-align:center}
 .login-reset:hover{color:var(--text)}
 .login-demo b{color:var(--text);font-weight:600}
-.login-demo code{background:#F3F4F6;padding:1px 4px;border-radius:3px;font-size:10px}
+.login-demo code{background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600;color:var(--text)}
+.login-card .finput{padding:9px 12px;font-size:13px}
+.login-card .fg{margin-bottom:14px}
 
 /* ── SIDEBAR USER ── */
 .side-user{width:34px;height:34px;border-radius:50%;background:#E5E7EB;color:var(--text);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-bottom:4px;flex-shrink:0;cursor:default;position:relative}
@@ -594,6 +596,16 @@ html,body{background:var(--bg);color:var(--text)}
     <div class="fg" id="agent-picker" style="display:none">
       <label class="flabel">Vous êtes</label>
       <select class="finput" id="login-agent"></select>
+    </div>
+
+    <div class="fg">
+      <label class="flabel" for="login-user">Identifiant</label>
+      <input type="text" class="finput" id="login-user" placeholder="admin" autocomplete="username" onkeydown="if(event.key==='Enter') doLogin()">
+    </div>
+
+    <div class="fg">
+      <label class="flabel" for="login-pass">Mot de passe</label>
+      <input type="password" class="finput" id="login-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter') doLogin()">
     </div>
 
     <button class="login-btn" onclick="doLogin()">Entrer</button>
@@ -1374,13 +1386,25 @@ function setLoginRole(role) {
   }
 
   document.getElementById('login-demo').innerHTML =
-    "<b>Accès libre</b> — aucun identifiant n'est demandé pour l'instant : choisissez simplement un profil. "
-    + "Une authentification par email et mot de passe pourra être réactivée plus tard.";
+    "<b>Identifiants d'accès :</b> Identifiant : <code>admin</code> · Mot de passe : <code>proovio17</code>";
 }
 
-// Entrée directe, sans identifiant (choix volontaire pour cette phase de test)
+// Entrée avec vérification des identifiants
 function doLogin() {
   const err = document.getElementById('login-err');
+  const user = (document.getElementById('login-user').value || '').trim();
+  const pass = (document.getElementById('login-pass').value || '').trim();
+
+  if (!user || !pass) {
+    err.textContent = "Veuillez renseigner votre identifiant et votre mot de passe.";
+    return;
+  }
+
+  if (user !== 'admin' || pass !== 'proovio17') {
+    err.textContent = "Identifiant ou mot de passe incorrect.";
+    return;
+  }
+
   try {
     if (loginRole === 'agent') {
       const id = document.getElementById('login-agent').value;
