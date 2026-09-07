@@ -409,11 +409,8 @@ tbody tr:hover{background:#FAFAFA}
 .login-btn{width:100%;background:#1A1A1A;color:#fff;border:none;border-radius:7px;padding:11px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:4px}
 .login-btn:hover{opacity:.88}
 .login-err{font-size:11.5px;color:var(--red);margin-top:10px;min-height:15px;font-weight:500}
-.login-demo{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);font-size:10.5px;color:var(--muted);line-height:1.6}
-.login-reset{background:none;border:none;color:var(--muted);font-size:10.5px;cursor:pointer;font-family:inherit;text-decoration:underline;margin-top:10px;display:block;width:100%;text-align:center}
+.login-reset{background:none;border:none;color:var(--muted);font-size:10.5px;cursor:pointer;font-family:inherit;text-decoration:underline;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:block;width:100%;text-align:center}
 .login-reset:hover{color:var(--text)}
-.login-demo b{color:var(--text);font-weight:600}
-.login-demo code{background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600;color:var(--text)}
 .login-card .finput{padding:9px 12px;font-size:13px}
 .login-card .fg{margin-bottom:14px}
 
@@ -611,7 +608,6 @@ html,body{background:var(--bg);color:var(--text)}
     <button class="login-btn" onclick="doLogin()">Entrer</button>
     <div class="login-err" id="login-err"></div>
 
-    <div class="login-demo" id="login-demo"></div>
     <button class="login-reset" onclick="resetDemoData()">↻ Réinitialiser les données de démonstration</button>
   </div>
 </div>
@@ -1384,9 +1380,6 @@ function setLoginRole(role) {
       agents.map(a => { const cl = agentClients(a).map(cliNom).join(', ');
         return `<option value="${a.id}">${a.prenom} ${a.nom}${cl ? ' — ' + cl : ''}</option>`; }).join('');
   }
-
-  document.getElementById('login-demo').innerHTML =
-    "<b>Identifiants d'accès :</b> Identifiant : <code>admin</code> · Mot de passe : <code>proovio17</code>";
 }
 
 // Entrée avec vérification des identifiants
