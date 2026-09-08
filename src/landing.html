@@ -198,18 +198,21 @@
   .legal-modal-tabs{display:flex;gap:6px;background:#EFEFEC;padding:4px;border-radius:10px;}
   .legal-tab{padding:8px 14px;border:none;background:transparent;border-radius:7px;font-family:inherit;font-size:12.5px;font-weight:500;color:var(--ink-soft);cursor:pointer;transition:all .15s;}
   .legal-tab.active{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.08);}
-  .legal-modal-actions{display:flex;align-items:center;gap:10px;}
-  .legal-btn-ext{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#fff;background:var(--ink);padding:7px 14px;border-radius:8px;text-decoration:none;transition:background .15s;}
+  .legal-modal-actions{display:flex;align-items:center;gap:8px;}
+  .legal-btn-ext{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#fff;background:var(--accent);padding:7px 14px;border-radius:8px;text-decoration:none;transition:background .15s;}
   .legal-btn-ext svg{width:13px;height:13px;}
-  .legal-btn-ext:hover{background:#000;}
+  .legal-btn-ext:hover{background:#257348;}
+  .legal-btn-ghost{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);padding:7px 12px;border-radius:8px;text-decoration:none;transition:all .15s;}
+  .legal-btn-ghost svg{width:13px;height:13px;}
+  .legal-btn-ghost:hover{background:var(--bg);border-color:var(--ink);}
   .legal-modal-close{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
   .legal-modal-close:hover{background:var(--bad-soft);color:var(--bad);border-color:var(--bad);}
   .legal-modal-body{flex:1;overflow-y:auto;padding:32px 36px;background:#fff;line-height:1.65;}
   .legal-content{display:none;}
   .legal-content.active{display:block;}
   .legal-content h3{font-size:22px;letter-spacing:-0.02em;margin-bottom:6px;color:var(--ink);}
-  .legal-content .meta{font-size:12.5px;color:var(--ink-soft);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line);}
-  .legal-content h4{font-size:16px;margin-top:24px;margin-bottom:10px;color:var(--ink);padding-top:12px;border-top:1px solid var(--line-soft);}
+  .legal-content .meta{font-size:12.5px;color:var(--ink-soft);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .legal-content h4{font-size:16px;margin-top:24px;margin-bottom:10px;color:var(--ink);padding-top:14px;border-top:1px solid var(--line-soft);}
   .legal-content h5{font-size:14px;margin-top:16px;margin-bottom:8px;color:var(--ink);}
   .legal-content p{margin-bottom:12px;color:var(--ink-soft);font-size:14px;}
   .legal-content ul{margin:10px 0 14px 20px;color:var(--ink-soft);font-size:14px;}
@@ -218,7 +221,8 @@
   .legal-table th,.legal-table td{padding:9px 12px;border:1px solid var(--line);}
   .legal-table th{background:#F8F8F6;font-weight:600;color:var(--ink);text-align:left;width:38%;}
   .legal-table td{background:#fff;color:var(--ink-soft);}
-  @media(max-width:768px){.legal-modal{padding:12px;}.legal-modal-card{max-height:92vh;border-radius:14px;}.legal-modal-header{padding:12px 16px;}.legal-modal-body{padding:20px 18px;}.legal-tab{padding:6px 10px;font-size:12px;}}
+  .legal-note{background:#FFF9E6;border-left:4px solid #E5A100;padding:12px 14px;border-radius:4px;font-size:12.5px;color:#735100;margin:14px 0;}
+  @media(max-width:768px){.legal-modal{padding:10px;}.legal-modal-card{max-height:94vh;border-radius:14px;}.legal-modal-header{padding:12px 14px;}.legal-modal-body{padding:20px 16px;}.legal-tab{padding:6px 10px;font-size:12px;}.legal-btn-ghost{display:none;}}
 </style>
 </head>
 <body>
@@ -498,75 +502,163 @@
         <button id="modal-tab-confidentialite" class="legal-tab" onclick="switchDocTab('confidentialite')">Politique de Confidentialité</button>
       </div>
       <div class="legal-modal-actions">
-        <a id="legal-modal-pdf" href="politique/Mentions_Legales_CGU_Proovio.pdf" target="_blank" class="legal-btn-ext">
+        <a id="legal-modal-pdf" href="politique/Mentions_Legales_CGU_Proovio.pdf" target="_blank" download="Mentions_Legales_CGU_Proovio.pdf" class="legal-btn-ext" title="Télécharger le PDF">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span>PDF Officiel</span>
+          <span>Télécharger le PDF</span>
+        </a>
+        <a id="legal-modal-open-tab" href="mentions-legales.html" target="_blank" class="legal-btn-ghost" title="Ouvrir dans un onglet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span>Ouvrir en grand</span>
         </a>
         <button class="legal-modal-close" onclick="closeDocModal()" aria-label="Fermer">✕</button>
       </div>
     </div>
     <div class="legal-modal-body">
-      <!-- Section Mentions Légales -->
+      <!-- Section Mentions Légales & CGU Complète -->
       <div id="modal-content-mentions" class="legal-content active">
-        <h3>Mentions Légales & CGU</h3>
-        <div class="meta">En vigueur au : 7 septembre 2026 · Landing Page Proovio</div>
-        <p><strong>Important :</strong> Conformément à la stratégie d'exploitation du service Proovio, l'accès direct à la plateforme SaaS applicative est actuellement réservé aux accès clients soumis à un contrat spécifique (incluant un DPA / Contrat de sous-traitance des données selon l'art. 28 du RGPD). Les présentes Mentions Légales et Conditions Générales d'Utilisation régissent de manière exclusive la consultation, la navigation et l'utilisation du site vitrine (« Landing Page ») accessible à l'adresse <strong>proovio.fr</strong>, et la sollicitation de démonstrations.</p>
+        <h3>MENTIONS LÉGALES ET CONDITIONS GÉNÉRALES D'UTILISATION (CGU)</h3>
+        <div class="meta">
+          <span>Landing Page Proovio · En vigueur au : 7 septembre 2026</span>
+          <span style="color:var(--accent);font-weight:600;">Texte officiel intégral</span>
+        </div>
+
+        <p><strong>Important :</strong> Conformément à la stratégie d'exploitation du service Proovio, l'accès direct à la plateforme SaaS applicative est actuellement bloqué et réservé aux accès clients soumis à un contrat spécifique (incluant un DPA / Contrat de sous-traitance des données selon l'art. 28 du RGPD). Les présentes Mentions Légales et Conditions Générales d'Utilisation régissent de manière exclusive la consultation, la navigation et l'utilisation du site vitrine (« Landing Page ») accessible à l'adresse <strong>proovio.fr</strong>, et la sollicitation de démonstrations.</p>
         
-        <h4>1. Mentions légales (loi n° 2004-575 LCEN)</h4>
+        <h4>1. Mentions légales (article 6 de la loi n° 2004-575 LCEN)</h4>
+        
         <h5>1.1. Éditeur du site</h5>
         <table class="legal-table">
-          <tr><th>Dénomination sociale</th><td>Dakrea (Proovio)</td></tr>
+          <tr><th>Dénomination sociale / Nom commercial</th><td>Dakrea (Proovio)</td></tr>
           <tr><th>Forme juridique</th><td>Entrepreneur individuel — micro-entreprise</td></tr>
-          <tr><th>SIREN / SIRET</th><td>853 232 528 / 853 232 528 00028</td></tr>
-          <tr><th>Siège social</th><td>Bureau 326, 59 rue de Ponthieu, 75008 Paris</td></tr>
+          <tr><th>SIREN</th><td>853 232 528</td></tr>
+          <tr><th>SIRET (siège)</th><td>853 232 528 00028</td></tr>
+          <tr><th>Adresse du siège social</th><td>Bureau 326, 59 rue de Ponthieu, 75008 Paris</td></tr>
           <tr><th>Activité</th><td>Conseil en systèmes et logiciels informatiques</td></tr>
-          <tr><th>Directeur de la publication</th><td>M. Lemy Dilukeba (dirigeant)</td></tr>
-          <tr><th>Contact</th><td>contact@proovio.fr · +33 1 89 62 34 50</td></tr>
-          <tr><th>TVA</th><td>TVA non applicable, art. 293 B du CGI</td></tr>
+          <tr><th>Dirigeant / Responsable</th><td>M. Lemy Dilukeba</td></tr>
+          <tr><th>Directeur de la publication</th><td>M. Lemy Dilukeba, en sa qualité de dirigeant de Dakrea</td></tr>
+          <tr><th>Adresse e-mail de contact</th><td>contact@proovio.fr</td></tr>
+          <tr><th>Téléphone</th><td>+33 1 89 62 34 50</td></tr>
+          <tr><th>TVA intracommunautaire</th><td>TVA non applicable, article 293 B du Code général des impôts (CGI)</td></tr>
         </table>
 
         <h5>1.2. Hébergeur du site</h5>
         <table class="legal-table">
-          <tr><th>Hébergeur</th><td>Hostinger International Limited</td></tr>
-          <tr><th>Adresse</th><td>61 Lordou Vyronos, Lumiel Building, 4th floor, 6023 Larnaca, Chypre</td></tr>
+          <tr><th>Nom de l'hébergeur</th><td>Hostinger International Limited</td></tr>
+          <tr><th>Adresse de l'hébergeur</th><td>61 Lordou Vyronos, Lumiel Building, 4th floor, 6023 Larnaca, Chypre</td></tr>
           <tr><th>Site web</th><td>www.hostinger.fr</td></tr>
-          <tr><th>Localisation serveurs</th><td>Union Européenne</td></tr>
+          <tr><th>Localisation des serveurs</th><td>Union Européenne (France / Pays-Bas / Lituanie)</td></tr>
         </table>
 
-        <h5>1.3. Outils de mesure d'audience et cookies</h5>
-        <p>Afin de garantir un respect de la vie privée dès la conception (Privacy by Design), le site landing page Proovio utilise exclusivement une solution d'analyse d'audience exemptée de consentement préalable (anonymisation avancée d'IP), conformément aux recommandations de la CNIL. Aucun cookie tiers à des fins de ciblage publicitaire n'est déposé.</p>
+        <h5>1.3. Outils de mesure d'audience et de cookies</h5>
+        <p>Afin de garantir un respect de la vie privée dès la conception (Privacy by Design), le site landing page Proovio utilise exclusivement une solution d'analyse d'audience exemptée de consentement préalable (Matomo Analytics configuré en mode d'anonymisation avancée d'IP), conformément aux recommandations de la CNIL. Aucun cookie tiers à des fins de ciblage publicitaire, de profilage commercial ou de revente de données n'est déposé ou exécuté lors de la navigation sur la landing page.</p>
 
         <h4>2. Conditions Générales d'Utilisation (CGU)</h4>
-        <p>Le site landing page Proovio a pour vocation de présenter la solution Proovio (horodatage, géolocalisation et contrôle d'authenticité de preuves terrain), de fournir les grilles indicatives et de permettre la réservation de démonstrations.</p>
-        <p><strong>Propriété intellectuelle :</strong> L'ensemble des éléments constituant le site (textes, graphismes, logos, codes) sont la propriété exclusive de Dakrea. Toute reproduction sans autorisation écrite est strictement interdite.</p>
+        
+        <h5>2.1. Objet et champ d'application</h5>
+        <p>Les présentes CGU ont pour objet de définir les modalités de mise à disposition du site vitrine Proovio et les conditions d'utilisation par toute personne physique ou morale (ci-après l'« Utilisateur » ou le « Prospect ») accédant au site. La navigation sur le site ainsi que toute soumission du formulaire de demande de démonstration emportent l'acceptation pleine et entière, sans réserve, des présentes CGU.</p>
+
+        <h5>2.2. Description des services présentés et restriction d'accès au SaaS</h5>
+        <p>Le site landing page Proovio a pour vocation exclusive :</p>
+        <ul>
+          <li>De présenter le cœur de métier de la solution Proovio (horodatage, géolocalisation et contrôle d'authenticité de preuves terrain) ;</li>
+          <li>De fournir les grilles tarifaires indicatives du service B2B ;</li>
+          <li>De permettre la réservation d'une démonstration personnalisée de 20 minutes auprès des équipes de Dakrea via un formulaire dédié.</li>
+        </ul>
+        <p><strong>Restriction d'accès à la plateforme SaaS :</strong> L'accès effectif à la plateforme SaaS applicative Proovio est strictement bloqué et indisponible depuis la présente landing page. L'ouverture des accès clients s'effectue exclusivement dans un cadre contractuel séparé incluant un contrat de licence SaaS, un SLA (engagement de niveau de service) et un DPA (Data Processing Agreement / contrat de sous-traitance art. 28 du RGPD).</p>
+
+        <h5>2.3. Propriété intellectuelle</h5>
+        <p>L'ensemble des éléments constituant le site landing page Proovio (notamment les textes, éléments graphiques, logos, marques, structures HTML/CSS, typographies, icônes) sont la propriété exclusive de Dakrea ou font l'objet d'un droit d'exploitation accordé à cette dernière. Toute reproduction, représentation, modification, adaptation ou exploitation totale ou partielle du site ou de ses éléments, par quelque procédé que ce soit, sans l'autorisation écrite préalable de Dakrea, est strictement interdite et constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+
+        <h5>2.4. Traitement des demandes de démonstration</h5>
+        <p>Les Utilisateurs souhaitant obtenir une démonstration du service remplissent un formulaire. Tout formulaire soumis fait l'objet d'un traitement dans les conditions décrites dans la Politique de confidentialité dédiée.</p>
+
+        <h5>2.5. Responsabilité et disponibilité du site</h5>
+        <p>Dakrea s'efforce d'assurer la disponibilité continue du site landing page. Toutefois, Dakrea ne saurait être tenue responsable des interruptions temporaires du site pour maintenance, des dysfonctionnements du réseau Internet ou de toute impossibilité d'accès indépendante de sa volonté.</p>
+
+        <h5>2.6. Droit applicable et juridiction compétente</h5>
+        <p>Les présentes CGU, conditions de présentation et mentions légales sont régies par le droit français. En cas de litige relatif à leur interprétation ou à leur exécution, et à défaut de résolution amiable, compétence exclusive est attribuée aux tribunaux compétents de Paris.</p>
       </div>
 
-      <!-- Section Confidentialité -->
+      <!-- Section Politique de Confidentialité Complète -->
       <div id="modal-content-confidentialite" class="legal-content">
-        <h3>Politique de Confidentialité</h3>
-        <div class="meta">En vigueur au : 7 septembre 2026 · Conformité RGPD</div>
-        <p>La présente Politique s'applique de manière exclusive aux données à caractère personnel collectées via la Landing Page <strong>proovio.fr</strong> et son formulaire de demande de démonstration.</p>
+        <h3>POLITIQUE DE CONFIDENTIALITÉ</h3>
+        <div class="meta">
+          <span>Landing Page Proovio · En vigueur au : 7 septembre 2026</span>
+          <span style="color:var(--accent);font-weight:600;">Conformité RGPD intégrale</span>
+        </div>
 
-        <h4>1. Données personnelles collectées</h4>
+        <p><strong>Périmètre du document :</strong> La présente Politique de confidentialité s'applique de manière exclusive aux données à caractère personnel collectées via la Landing Page <strong>proovio.fr</strong> et son formulaire de demande de démonstration. L'accès à la plateforme SaaS Proovio étant bloqué sur la landing page, l'utilisation ultérieure du service logiciel fait l'objet d'un DPA séparé (Contrat de sous-traitance art. 28 RGPD).</p>
+
+        <h4>1. Responsable du traitement des données</h4>
         <table class="legal-table">
-          <tr><th>Nom & Prénom</th><td>Identité professionnelle du contact (Obligatoire)</td></tr>
-          <tr><th>Nom de l'entreprise</th><td>Organisation prospectée (Obligatoire)</td></tr>
-          <tr><th>E-mail & Téléphone</th><td>Coordonnées de contact direct professionnel (Obligatoire)</td></tr>
-          <tr><th>Consentement</th><td>Preuve de consentement univoque (Obligatoire)</td></tr>
+          <tr><th>Entité légale</th><td>Dakrea</td></tr>
+          <tr><th>Représentant / Dirigeant</th><td>M. Lemy Dilukeba</td></tr>
+          <tr><th>Adresse postale</th><td>Bureau 326, 59 rue de Ponthieu, 75008 Paris</td></tr>
+          <tr><th>Activité</th><td>Conseil en systèmes et logiciels informatiques</td></tr>
+          <tr><th>Contact référent RGPD</th><td>contact@proovio.fr</td></tr>
+          <tr><th>Téléphone</th><td>+33 1 89 62 34 50</td></tr>
         </table>
 
-        <h4>2. Finalités du traitement & Bases légales</h4>
+        <h4>2. Données personnelles collectées sur le formulaire de démonstration</h4>
+        <p>Afin que la présente politique corresponde rigoureusement aux champs collectés sur le formulaire de demande de démonstration du site landing page, les données collectées sont les suivantes :</p>
+        <table class="legal-table">
+          <thead>
+            <tr><th>Champ du formulaire</th><th>Type de donnée collectée</th><th>Caractère</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nom professionnel</td><td>Identité de l'interlocuteur (nom / prénom)</td><td>Obligatoire</td></tr>
+            <tr><td>Nom de la société</td><td>Identité de l'entreprise ou organisation prospectée</td><td>Obligatoire</td></tr>
+            <tr><td>E-mail professionnel</td><td>Adresse électronique professionnelle de contact</td><td>Obligatoire</td></tr>
+            <tr><td>Téléphone</td><td>Numéro de ligne directe ou mobile professionnel</td><td>Obligatoire</td></tr>
+            <tr><td>Consentement (case à cocher)</td><td>Preuve de consentement libre, éclairé et univoque</td><td>Obligatoire</td></tr>
+          </tbody>
+        </table>
+
+        <h4>3. Finalités du traitement et bases légales</h4>
+        <table class="legal-table">
+          <thead>
+            <tr><th>Finalité</th><th>Description</th><th>Base légale (art. 6 RGPD)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Organisation de la démonstration</td><td>Prise de contact, planification et réalisation de la présentation visio de 20 minutes adaptée au métier de l'entreprise.</td><td>Mesures précontractuelles (art. 6.1.b)</td></tr>
+            <tr><td>Prospection commerciale B2B</td><td>Envoi d'informations complémentaires et relance suite à la demande de démo.</td><td>Consentement explicite (art. 6.1.a) et intérêt légitime B2B (art. 6.1.f)</td></tr>
+            <tr><td>Statistiques d'audience anonymes</td><td>Analyse de la fréquentation du site via Matomo Analytics anonymisé.</td><td>Intérêt légitime (art. 6.1.f)</td></tr>
+          </tbody>
+        </table>
+
+        <h4>4. Destinataires et sous-traitants des données</h4>
+        <p>Les données à caractère personnel sont strictement réservées à l'usage interne de Dakrea. Elles ne sont <strong>jamais revendues, louées ou cédées</strong> à des tiers à des fins commerciales. Les seuls destinataires habilités sont :</p>
         <ul>
-          <li><strong>Organisation de la démo :</strong> Planification et présentation personnalisée de 20 min (Mesures précontractuelles art. 6.1.b).</li>
-          <li><strong>Prospection B2B :</strong> Envoi d'informations complémentaires (Consentement art. 6.1.a & Intérêt légitime art. 6.1.f).</li>
-          <li><strong>Statistiques d'audience :</strong> Mesure de fréquentation anonymisée (Intérêt légitime art. 6.1.f).</li>
+          <li>L'équipe habilitée de Dakrea (équipe commerciale et support) ;</li>
+          <li>Notre prestataire d'hébergement web et d'infrastructure cloud, Hostinger International Limited (serveurs situés en Union Européenne).</li>
         </ul>
 
-        <h4>3. Sécurité et Destinataires</h4>
-        <p>Les données sont strictement réservées à l'équipe interne de Dakrea et ne sont <strong>jamais revendues ni cédées</strong> à des tiers. Les flux sont sécurisés via chiffrement TLS 1.3 et les bases sont chiffrées en AES-256.</p>
+        <h4>5. Durée de conservation des données</h4>
+        <ul>
+          <li><strong>Données de prospection (demandes de démo) :</strong> Conservées pendant une durée maximale de 3 ans à compter du dernier contact émanant du prospect (ex. dernier e-mail ou demande).</li>
+          <li><strong>En cas de conclusion d'un contrat SaaS :</strong> Les données sont intégrées au dossier client et conservées pendant toute la durée contractuelle, puis archivées selon les obligations légales (5 à 10 ans).</li>
+        </ul>
 
-        <h4>4. Vos droits</h4>
-        <p>Vous disposez des droits d'accès, rectification, effacement, opposition et portabilité. Contact : <strong>contact@proovio.fr</strong> ou par courrier à <em>Dakrea – Bureau 326, 59 rue de Ponthieu, 75008 Paris</em>.</p>
+        <h4>6. Sécurité des données</h4>
+        <ul>
+          <li>Chiffrement TLS 1.3 de l'ensemble du flux Web sur la landing page ;</li>
+          <li>Chiffrement au repos des bases de données de formulaires (AES-256) ;</li>
+          <li>Restriction stricte des accès administratifs aux seules personnes habilitées ;</li>
+          <li>Hébergement et sauvegardes quotidiennes chiffrées (Hostinger International Limited).</li>
+        </ul>
+
+        <h4>7. Droits des personnes concernées</h4>
+        <p>Conformément au RGPD (règlement UE 2016/679) et à la loi Informatique et Libertés modifiée, chaque Utilisateur dispose des droits suivants :</p>
+        <ul>
+          <li><strong>Droit d'accès (art. 15 RGPD) :</strong> Obtenir la confirmation que des données sont traitées et en obtenir une copie.</li>
+          <li><strong>Droit de rectification (art. 16 RGPD) :</strong> Demander la correction de données inexactes ou incomplètes.</li>
+          <li><strong>Droit à l'effacement / « droit à l'oubli » (art. 17 RGPD) :</strong> Demander la suppression de ses données personnelles.</li>
+          <li><strong>Droit à la limitation du traitement (art. 18 RGPD) :</strong> Demander le gel temporaire du traitement.</li>
+          <li><strong>Droit d'opposition (art. 21 RGPD) :</strong> S'opposer à tout moment à la prospection commerciale.</li>
+          <li><strong>Droit à la portabilité (art. 20 RGPD) :</strong> Récupérer ses données dans un format structuré.</li>
+        </ul>
+        <p>Pour exercer l'un de ces droits, l'Utilisateur peut adresser sa demande par e-mail à <strong>contact@proovio.fr</strong> ou par courrier postal à : <em>Dakrea – Bureau 326, 59 rue de Ponthieu, 75008 Paris</em>. Une réponse sera apportée sous 30 jours maximum.</p>
+        <p>En cas de différend non résolu, l'Utilisateur dispose du droit d'introduire une réclamation auprès de la <strong>CNIL</strong> (Commission nationale de l'informatique et des libertés — <a href="https://www.cnil.fr" target="_blank" style="color:var(--accent);text-decoration:underline;">www.cnil.fr</a>).</p>
       </div>
     </div>
   </div>
@@ -579,17 +671,31 @@
   }, {threshold:0.15});
   els.forEach(el=>io.observe(el));
 
-  const DOCS_PDF = {
-    mentions: "politique/Mentions_Legales_CGU_Proovio.pdf",
-    confidentialite: "politique/Politique_Confidentialite_Proovio.pdf"
+  const DOCS_DATA = {
+    mentions: {
+      pdf: "politique/Mentions_Legales_CGU_Proovio.pdf",
+      pdfName: "Mentions_Legales_CGU_Proovio.pdf",
+      page: "mentions-legales.html"
+    },
+    confidentialite: {
+      pdf: "politique/Politique_Confidentialite_Proovio.pdf",
+      pdfName: "Politique_Confidentialite_Proovio.pdf",
+      page: "politique-confidentialite.html"
+    }
   };
 
   function switchDocTab(key) {
+    const data = DOCS_DATA[key] || DOCS_DATA.mentions;
     document.getElementById('modal-tab-mentions').classList.toggle('active', key === 'mentions');
     document.getElementById('modal-tab-confidentialite').classList.toggle('active', key === 'confidentialite');
     document.getElementById('modal-content-mentions').classList.toggle('active', key === 'mentions');
     document.getElementById('modal-content-confidentialite').classList.toggle('active', key === 'confidentialite');
-    document.getElementById('legal-modal-pdf').href = DOCS_PDF[key];
+    
+    const pdfBtn = document.getElementById('legal-modal-pdf');
+    pdfBtn.href = data.pdf;
+    pdfBtn.setAttribute('download', data.pdfName);
+    
+    document.getElementById('legal-modal-open-tab').href = data.page;
     document.querySelector('.legal-modal-body').scrollTop = 0;
   }
 
