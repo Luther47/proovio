@@ -102,12 +102,21 @@
   .after-meta div b{display:block;font-size:11.5px;color:#fff;font-weight:500;margin-top:3px;font-family:'IBM Plex Mono';}
   @media(max-width:760px){.compare{grid-template-columns:1fr;} .after-thumb{height:140px;}}
 
-  /* TRUST */
-  .trust{padding:56px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .trust .wrap{display:flex;align-items:center;gap:44px;flex-wrap:wrap;justify-content:space-between;}
-  .trust p{font-size:12.5px;color:var(--ink-soft);letter-spacing:0.03em;white-space:nowrap;}
-  .trust-items{display:flex;gap:40px;flex-wrap:wrap;}
-  .trust-items span{font-family:'Space Grotesk';font-weight:600;color:var(--ink-soft);font-size:15px;opacity:0.7;}
+  /* SECTEURS & MÉTIERS */
+  .secteurs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px;}
+  .secteur-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;}
+  .secteur-card.in:hover{transform:translateY(-4px);box-shadow:0 18px 36px -10px rgba(20,21,26,0.09);border-color:rgba(47,143,91,0.45);}
+  .secteur-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;}
+  .secteur-icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;}
+  .secteur-icon svg{width:22px;height:22px;stroke:var(--accent);}
+  .secteur-badge{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:4px 9px;border-radius:100px;letter-spacing:0.04em;white-space:nowrap;}
+  .secteur-card h3{font-size:18px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;color:var(--ink);line-height:1.25;}
+  .secteur-card p{font-size:14px;color:var(--ink-soft);line-height:1.6;margin-bottom:20px;flex-grow:1;}
+  .secteur-pills{display:flex;flex-wrap:wrap;gap:7px;padding-top:16px;border-top:1px solid var(--line-soft);}
+  .secteur-pill{font-size:12px;color:var(--ink);background:var(--bg);padding:4px 9px;border-radius:6px;font-weight:500;border:1px solid var(--line-soft);display:inline-flex;align-items:center;gap:6px;}
+  .secteur-pill::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;}
+  @media(max-width:960px){.secteurs-grid{grid-template-columns:repeat(2,1fr);gap:16px;}}
+  @media(max-width:640px){.secteurs-grid{grid-template-columns:1fr;}}
 
   /* SECTION HEAD */
   .section{padding:112px 0;}
@@ -239,6 +248,7 @@
       <img src="logo-proovio.png" alt="Proovio" class="brand-logo">
     </a>
     <div class="nav-links">
+      <a href="#secteurs">Secteurs &amp; Métiers</a>
       <a href="#coeur-metier">Le produit</a>
       <a href="#fonctionnement">Fonctionnement</a>
       <a href="#faq">FAQ</a>
@@ -319,15 +329,122 @@
   </div>
 </header>
 
-<section class="trust">
+<section class="section" id="secteurs" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(246,246,244,0.3) 100%);">
   <div class="wrap">
-    <p>Utilisé par des équipes terrain dans l'affichage, la distribution et le contrôle réseau</p>
-    <div class="trust-items">
-      <span>AFFICHAGE+</span>
-      <span>RÉSEAU DIRECT</span>
-      <span>GARONNE DISTRIB</span>
-      <span>MERIDIEN OOH</span>
-      <span>TERRAVERT</span>
+    <div class="sec-head">
+      <div class="sec-eyebrow">SECTEURS &amp; MÉTIERS TERRAIN</div>
+      <h2>Une solution conçue pour tous les professionnels du terrain</h2>
+      <p>Affichage, bâtiment, audit, maintenance, propreté... Proovio s'adapte à vos équipes mobiles pour certifier chaque intervention, rassurer vos clients et accélérer vos validations.</p>
+    </div>
+
+    <div class="secteurs-grid">
+      <!-- 1. Affichage & Street Marketing -->
+      <div class="secteur-card" data-reveal>
+        <div class="secteur-head">
+          <div class="secteur-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <span class="secteur-badge">OOH &amp; MARKETING</span>
+        </div>
+        <h3>Affichage &amp; Street Marketing</h3>
+        <p>Prouvez la pose de chaque panneau, abribus, bâche ou distribution de flyers avec l'horodatage et la géolocalisation exacte pour vos annonceurs.</p>
+        <div class="secteur-pills">
+          <span class="secteur-pill">Afficheurs &amp; poseurs</span>
+          <span class="secteur-pill">Mobilier urbain &amp; OOH</span>
+          <span class="secteur-pill">Distribution d'imprimés</span>
+          <span class="secteur-pill">Régies publicitaires</span>
+        </div>
+      </div>
+
+      <!-- 2. BTP & Travaux -->
+      <div class="secteur-card" data-reveal>
+        <div class="secteur-head">
+          <div class="secteur-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M13 10h4v11M9 9v.01M9 13v.01M9 17v.01"/></svg>
+          </div>
+          <span class="secteur-badge">BTP &amp; CHANTIERS</span>
+        </div>
+        <h3>BTP, Travaux &amp; Rénovation</h3>
+        <p>Tracez l'avancement des chantiers, consignez les levées de réserves et conservez un historique visuel infalsifiable avant/après travaux.</p>
+        <div class="secteur-pills">
+          <span class="secteur-pill">Conducteurs de travaux</span>
+          <span class="secteur-pill">Artisans &amp; sous-traitants</span>
+          <span class="secteur-pill">Levée de réserves</span>
+          <span class="secteur-pill">États des lieux</span>
+        </div>
+      </div>
+
+      <!-- 3. Audit & Retail -->
+      <div class="secteur-card" data-reveal>
+        <div class="secteur-head">
+          <div class="secteur-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+          </div>
+          <span class="secteur-badge">RETAIL &amp; MERCHANDISING</span>
+        </div>
+        <h3>Retail, Audit &amp; Merchandising</h3>
+        <p>Contrôlez l'implantation de vos produits en linéaire, la mise en place de la PLV en magasin et la conformité des vitrines en réseau.</p>
+        <div class="secteur-pills">
+          <span class="secteur-pill">Merchandisers de marque</span>
+          <span class="secteur-pill">Poseurs de PLV &amp; têtes de gondole</span>
+          <span class="secteur-pill">Auditeurs réseaux</span>
+          <span class="secteur-pill">Relevés de linéaires</span>
+        </div>
+      </div>
+
+      <!-- 4. Maintenance & Télécoms -->
+      <div class="secteur-card" data-reveal>
+        <div class="secteur-head">
+          <div class="secteur-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <span class="secteur-badge">MAINTENANCE &amp; ÉNERGIE</span>
+        </div>
+        <h3>Maintenance, Énergie &amp; Télécoms</h3>
+        <p>Certifiez le passage des techniciens sur les installations techniques (bornes IRVE, fibre optique, CVC, compteurs) pour déclencher la facturation.</p>
+        <div class="secteur-pills">
+          <span class="secteur-pill">Techniciens fibre &amp; réseau</span>
+          <span class="secteur-pill">Installateurs bornes IRVE</span>
+          <span class="secteur-pill">Maintenance CVC &amp; froid</span>
+          <span class="secteur-pill">Dépannage d'urgence</span>
+        </div>
+      </div>
+
+      <!-- 5. Nettoyage & Facility Management -->
+      <div class="secteur-card" data-reveal>
+        <div class="secteur-head">
+          <div class="secteur-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <span class="secteur-badge">PROPRETÉ &amp; SERVICES</span>
+        </div>
+        <h3>Propreté &amp; Facility Management</h3>
+        <p>Apportez une preuve incontestable de passage et d'exécution dans les copropriétés, bureaux, locaux industriels et espaces verts.</p>
+        <div class="secteur-pills">
+          <span class="secteur-pill">Entreprises de propreté</span>
+          <span class="secteur-pill">Syndics de copropriété</span>
+          <span class="secteur-pill">Paysagistes &amp; espaces verts</span>
+          <span class="secteur-pill">Gestion de parcs immobiliers</span>
+        </div>
+      </div>
+
+      <!-- 6. Sécurité & Contrôle -->
+      <div class="secteur-card" data-reveal>
+        <div class="secteur-head">
+          <div class="secteur-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <span class="secteur-badge">SÉCURITÉ &amp; CONTRÔLE</span>
+        </div>
+        <h3>Sécurité, Rondes &amp; Diagnostics</h3>
+        <p>Validez les rondes de surveillance, sécurisez les constats d'incidents et générez des preuves conformes pour les assurances et les audits.</p>
+        <div class="secteur-pills">
+          <span class="secteur-pill">Agents de sécurité &amp; rondiers</span>
+          <span class="secteur-pill">Diagnostiqueurs immobiliers</span>
+          <span class="secteur-pill">Constats de sinistres</span>
+          <span class="secteur-pill">Contrôle réglementaire</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
