@@ -70,31 +70,37 @@
   @media(max-width:960px){.hero-main{grid-template-columns:1fr;gap:26px}.hero-visual,.hero-visual--book{width:calc(100% + 56px);justify-self:center;max-width:650px;margin:-18px -28px -26px}.hero-copy{max-width:680px}}
   @media(max-width:600px){.hero{padding-top:64px}.hero-visual,.hero-visual--book{width:calc(100% + 32px);margin:0 -16px -10px}.hero-cta{margin-top:28px}}
 
-  /* AVANT / APRES — signature element, no product screenshot */
+  /* AVANT / APRES — signature element */
   .compare{margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(20,21,26,0.16);}
-  .compare > div{background:var(--paper);padding:34px 30px;}
-  .cmp-head{display:flex;align-items:center;gap:9px;margin-bottom:26px;}
+  .compare > div{background:var(--paper);padding:34px 30px;display:flex;flex-direction:column;}
+  .cmp-head{display:flex;align-items:center;gap:9px;margin-bottom:22px;}
   .cmp-head .tag-bad{background:var(--bad-soft);color:var(--bad);font-size:11px;font-weight:700;letter-spacing:0.04em;padding:5px 10px;border-radius:100px;}
   .cmp-head .tag-good{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:0.04em;padding:5px 10px;border-radius:100px;}
-  .cmp-head span.label{font-size:13.5px;color:var(--ink-soft);}
-  .before-thread{display:flex;flex-direction:column;gap:10px;}
-  .bubble{background:#EFEFEC;border-radius:12px 12px 12px 3px;padding:10px 13px;font-size:12.5px;color:var(--ink-soft);max-width:88%;display:flex;flex-direction:column;gap:6px;}
-  .bubble .img{width:100%;height:52px;border-radius:7px;background:linear-gradient(135deg,#DAD5C9,#C9C2B2);}
-  .bubble .cap{display:flex;justify-content:space-between;font-size:10.5px;color:#9C9DA3;}
-  .bubble.mine{align-self:flex-end;background:#DCF2E4;border-radius:12px 12px 3px 12px;}
-  .bubble .warn{color:var(--bad);font-weight:600;font-size:10.5px;}
-  .after-card{background:var(--ink);border-radius:14px;padding:18px 20px;color:#fff;}
-  .after-card .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
-  .after-card h5{font-size:14.5px;font-weight:600;}
-  .after-card .loc{font-size:11px;color:#9C9DA3;margin-top:3px;}
-  .badge-auth{background:rgba(63,166,107,0.18);color:#5BC98A;font-size:10px;font-weight:700;padding:4px 9px;border-radius:100px;display:flex;align-items:center;gap:5px;white-space:nowrap;}
-  .after-thumb{width:100%;height:110px;border-radius:9px;background:linear-gradient(135deg,#1D1E24,#2A2B32);margin-bottom:14px;position:relative;overflow:hidden;}
-  .after-thumb::after{content:"";position:absolute;inset:0;background:
-    repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 40px);}
-  .after-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .cmp-head span.label{font-size:13.5px;color:var(--ink-soft);font-weight:500;}
+  .before-thread{display:flex;flex-direction:column;gap:12px;}
+  .bubble{background:#EFEFEC;border-radius:14px 14px 14px 4px;padding:12px 14px;font-size:13px;color:var(--ink);max-width:92%;display:flex;flex-direction:column;gap:8px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+  .bubble-img-wrap{position:relative;width:100%;height:104px;border-radius:8px;overflow:hidden;background:#D8D5CD;}
+  .bubble-photo{width:100%;height:100%;object-fit:cover;display:block;}
+  .bubble-badge-err{position:absolute;bottom:6px;left:6px;background:rgba(20,21,26,0.78);backdrop-filter:blur(4px);color:#fff;font-size:10px;font-weight:600;padding:3px 7px;border-radius:4px;}
+  .bubble-text{font-size:12.5px;line-height:1.45;color:var(--ink);margin:0;}
+  .bubble .cap{display:flex;justify-content:space-between;font-size:10.5px;color:#8E9096;}
+  .bubble.mine{align-self:flex-end;background:#DCF2E4;border-radius:14px 14px 4px 14px;}
+  .bubble.alert-bubble{border-left:3px solid var(--bad);background:#FDF5F4;}
+  .bubble .warn{color:var(--bad);font-weight:600;}
+  
+  .after-card{background:var(--ink);border-radius:16px;padding:20px 22px;color:#fff;box-shadow:0 12px 30px rgba(0,0,0,0.18);}
+  .after-card .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;gap:10px;}
+  .after-card h5{font-size:15px;font-weight:600;letter-spacing:-0.01em;}
+  .after-card .loc{font-size:11.5px;color:#9C9DA3;margin-top:3px;}
+  .badge-auth{background:rgba(63,166,107,0.22);color:#5BC98A;font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:100px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:1px solid rgba(91,201,138,0.3);}
+  .after-thumb{width:100%;height:175px;border-radius:10px;margin-bottom:14px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.12);}
+  .after-photo{width:100%;height:100%;object-fit:cover;display:block;}
+  .after-watermark{position:absolute;bottom:8px;right:8px;background:rgba(20,21,26,0.78);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);padding:3px 8px;border-radius:5px;}
+  .wm-tag{font-size:9.5px;font-family:'IBM Plex Mono',monospace;color:#5BC98A;font-weight:600;letter-spacing:0.04em;}
+  .after-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);}
   .after-meta div{font-size:9.5px;color:#8B8C93;letter-spacing:0.03em;}
-  .after-meta div b{display:block;font-size:12px;color:#fff;font-weight:500;margin-top:3px;font-family:'IBM Plex Mono';}
-  @media(max-width:760px){.compare{grid-template-columns:1fr;}}
+  .after-meta div b{display:block;font-size:11.5px;color:#fff;font-weight:500;margin-top:3px;font-family:'IBM Plex Mono';}
+  @media(max-width:760px){.compare{grid-template-columns:1fr;} .after-thumb{height:140px;}}
 
   /* TRUST */
   .trust{padding:56px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -265,23 +271,47 @@
       <div>
         <div class="cmp-head"><span class="tag-bad">AVANT</span><span class="label">Un groupe WhatsApp par opération</span></div>
         <div class="before-thread">
-          <div class="bubble"><div class="img"></div><div class="cap"><span>agent_marc.jpg</span><span>envoyé 14:02</span></div></div>
-          <div class="bubble mine"><div class="img"></div><div class="cap"><span>C'est laquelle enseigne déjà ?</span><span>14:07</span></div></div>
-          <div class="bubble"><div class="img"></div><div class="cap"><span class="warn">Photo floue, à reprendre</span><span>14:19</span></div></div>
+          <div class="bubble">
+            <div class="bubble-img-wrap">
+              <img src="boulangerie_facade_floue.jpg" alt="Photo WhatsApp floue" class="bubble-photo">
+              <span class="bubble-badge-err">⚠️ Photo floue &amp; compressée</span>
+            </div>
+            <p class="bubble-text">Pose terminée sur la boulangerie ! C'est bon pour celle-ci ? 👍</p>
+            <div class="cap"><span>agent_marc.jpg</span><span>14:02</span></div>
+          </div>
+          <div class="bubble mine">
+            <p class="bubble-text">C'est à quelle adresse exactement ? La photo est floue, impossible de lire le panneau ou l'enseigne...</p>
+            <div class="cap"><span>Vous</span><span>14:07</span></div>
+          </div>
+          <div class="bubble alert-bubble">
+            <p class="bubble-text"><span class="warn">❌ Preuve rejetée par le client :</span> Pas de coordonnées GPS, horodatage non certifié et cliché illisible. Repassage obligatoire.</p>
+            <div class="cap"><span class="warn">Rapport incomplet</span><span>14:19</span></div>
+          </div>
         </div>
       </div>
       <div>
         <div class="cmp-head"><span class="tag-good">AVEC PROOVIO</span><span class="label">Une preuve, tout de suite exploitable</span></div>
         <div class="after-card">
           <div class="top">
-            <div><h5>Boulangerie de la Garonne</h5><div class="loc">12 Place de la Garonne, Toulouse</div></div>
-            <div class="badge-auth"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#5BC98A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Authentique</div>
+            <div>
+              <h5>Boulangerie de la Garonne</h5>
+              <div class="loc">12 Place de la Garonne, 31000 Toulouse</div>
+            </div>
+            <div class="badge-auth">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5BC98A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              Certifié &amp; Conforme
+            </div>
           </div>
-          <div class="after-thumb"></div>
+          <div class="after-thumb">
+            <img src="boulangerie_facade_nette.jpg" alt="Devanture Boulangerie de la Garonne - Preuve certifiée Proovio" class="after-photo">
+            <div class="after-watermark">
+              <span class="wm-tag">GPS &amp; HORODATAGE SÉCURISÉS</span>
+            </div>
+          </div>
           <div class="after-meta">
-            <div>DATE &amp; HEURE<b>14 juil · 10:32</b></div>
-            <div>GPS<b>43.60°N 1.44°E</b></div>
-            <div>AGENT<b>M. Lefèvre</b></div>
+            <div>DATE &amp; HEURE<b>14 juil · 10:32:18</b></div>
+            <div>GPS (PRÉCISION 3M)<b>43.6008°N · 1.4412°E</b></div>
+            <div>AGENT DE TERRAIN<b>M. Lefèvre (Certifié)</b></div>
           </div>
         </div>
       </div>
