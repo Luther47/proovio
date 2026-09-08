@@ -2,6 +2,8 @@
   "rewrites": [
     { "source": "/", "destination": "/src/landing.html" },
     { "source": "/app", "destination": "/src/index.html" },
+    { "source": "/mentions-legales", "destination": "/src/mentions-legales.html" },
+    { "source": "/politique-confidentialite", "destination": "/src/politique-confidentialite.html" },
     { "source": "/(.*)", "destination": "/src/$1" }
   ]
 }

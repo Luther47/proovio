@@ -190,23 +190,35 @@
   [data-reveal].in{opacity:1;transform:translateY(0);}
 
   /* MODAL LÉGAL POPUP */
-  .legal-modal{position:fixed;inset:0;z-index:9999;background:rgba(20,21,26,0.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .25s ease;}
+  .legal-modal{position:fixed;inset:0;z-index:9999;background:rgba(20,21,26,0.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .25s ease;}
   .legal-modal.open{display:flex;opacity:1;}
-  .legal-modal-card{background:#fff;width:100%;max-width:960px;height:88vh;border-radius:18px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.3);border:1px solid var(--line);animation:modalSlide .25s ease;}
-  @keyframes modalSlide{from{transform:translateY(20px) scale(.98);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
-  .legal-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--line);background:#FAFAFA;}
-  .legal-modal-title-group{display:flex;align-items:center;gap:12px;}
-  .legal-modal-title{font-size:17px;font-weight:600;color:var(--ink);margin:0;}
-  .legal-badge{font-size:11px;font-weight:600;background:var(--accent-soft);color:var(--accent);padding:3px 8px;border-radius:6px;letter-spacing:0.02em;}
-  .legal-modal-actions{display:flex;align-items:center;gap:12px;}
-  .legal-btn-ext{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--ink);padding:6px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;transition:all .15s ease;}
+  .legal-modal-card{background:#fff;width:100%;max-width:880px;max-height:86vh;border-radius:20px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.35);border:1px solid var(--line);animation:modalSlide .25s ease;}
+  @keyframes modalSlide{from{transform:translateY(16px) scale(.98);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+  .legal-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--line);background:#FAFAFA;gap:12px;flex-wrap:wrap;}
+  .legal-modal-tabs{display:flex;gap:6px;background:#EFEFEC;padding:4px;border-radius:10px;}
+  .legal-tab{padding:8px 14px;border:none;background:transparent;border-radius:7px;font-family:inherit;font-size:12.5px;font-weight:500;color:var(--ink-soft);cursor:pointer;transition:all .15s;}
+  .legal-tab.active{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.08);}
+  .legal-modal-actions{display:flex;align-items:center;gap:10px;}
+  .legal-btn-ext{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#fff;background:var(--ink);padding:7px 14px;border-radius:8px;text-decoration:none;transition:background .15s;}
   .legal-btn-ext svg{width:13px;height:13px;}
-  .legal-btn-ext:hover{background:var(--bg);border-color:var(--ink);}
-  .legal-modal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s ease;}
+  .legal-btn-ext:hover{background:#000;}
+  .legal-modal-close{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
   .legal-modal-close:hover{background:var(--bad-soft);color:var(--bad);border-color:var(--bad);}
-  .legal-modal-body{flex:1;background:#EAEAE8;position:relative;}
-  .legal-modal-body iframe{width:100%;height:100%;border:none;display:block;}
-  @media(max-width:768px){.legal-modal{padding:10px;}.legal-modal-card{height:92vh;border-radius:14px;}.legal-modal-header{padding:12px 16px;}.legal-modal-title{font-size:14px;}.legal-badge{display:none;}}
+  .legal-modal-body{flex:1;overflow-y:auto;padding:32px 36px;background:#fff;line-height:1.65;}
+  .legal-content{display:none;}
+  .legal-content.active{display:block;}
+  .legal-content h3{font-size:22px;letter-spacing:-0.02em;margin-bottom:6px;color:var(--ink);}
+  .legal-content .meta{font-size:12.5px;color:var(--ink-soft);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+  .legal-content h4{font-size:16px;margin-top:24px;margin-bottom:10px;color:var(--ink);padding-top:12px;border-top:1px solid var(--line-soft);}
+  .legal-content h5{font-size:14px;margin-top:16px;margin-bottom:8px;color:var(--ink);}
+  .legal-content p{margin-bottom:12px;color:var(--ink-soft);font-size:14px;}
+  .legal-content ul{margin:10px 0 14px 20px;color:var(--ink-soft);font-size:14px;}
+  .legal-content li{margin-bottom:6px;}
+  .legal-table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 20px;}
+  .legal-table th,.legal-table td{padding:9px 12px;border:1px solid var(--line);}
+  .legal-table th{background:#F8F8F6;font-weight:600;color:var(--ink);text-align:left;width:38%;}
+  .legal-table td{background:#fff;color:var(--ink-soft);}
+  @media(max-width:768px){.legal-modal{padding:12px;}.legal-modal-card{max-height:92vh;border-radius:14px;}.legal-modal-header{padding:12px 16px;}.legal-modal-body{padding:20px 18px;}.legal-tab{padding:6px 10px;font-size:12px;}}
 </style>
 </head>
 <body>
@@ -465,8 +477,8 @@
         </div>
         <div class="foot-col">
           <h5>LÉGAL</h5>
-          <a href="politique/Mentions_Legales_CGU_Proovio.pdf" target="_blank" onclick="openDocModal('mentions', event)">Mentions légales</a>
-          <a href="politique/Politique_Confidentialite_Proovio.pdf" target="_blank" onclick="openDocModal('confidentialite', event)">Confidentialité</a>
+          <a href="mentions-legales.html" onclick="openDocModal('mentions', event)">Mentions légales</a>
+          <a href="politique-confidentialite.html" onclick="openDocModal('confidentialite', event)">Confidentialité</a>
         </div>
       </div>
     </div>
@@ -477,24 +489,85 @@
   </div>
 </footer>
 
-<!-- MODAL LÉGAL (POPUP PDF) -->
+<!-- MODAL LÉGAL POPUP INTERACTIVE -->
 <div id="legal-modal" class="legal-modal" aria-hidden="true" onclick="if(event.target===this) closeDocModal()">
   <div class="legal-modal-card">
     <div class="legal-modal-header">
-      <div class="legal-modal-title-group">
-        <h4 id="legal-modal-title" class="legal-modal-title">Document Légal</h4>
-        <span class="legal-badge">PDF Officiel</span>
+      <div class="legal-modal-tabs">
+        <button id="modal-tab-mentions" class="legal-tab active" onclick="switchDocTab('mentions')">Mentions Légales & CGU</button>
+        <button id="modal-tab-confidentialite" class="legal-tab" onclick="switchDocTab('confidentialite')">Politique de Confidentialité</button>
       </div>
       <div class="legal-modal-actions">
-        <a id="legal-modal-external" href="#" target="_blank" class="legal-btn-ext" title="Ouvrir dans un nouvel onglet">
-          <span>Ouvrir en grand</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <a id="legal-modal-pdf" href="politique/Mentions_Legales_CGU_Proovio.pdf" target="_blank" class="legal-btn-ext">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>PDF Officiel</span>
         </a>
         <button class="legal-modal-close" onclick="closeDocModal()" aria-label="Fermer">✕</button>
       </div>
     </div>
     <div class="legal-modal-body">
-      <iframe id="legal-modal-iframe" src="" title="Document légal"></iframe>
+      <!-- Section Mentions Légales -->
+      <div id="modal-content-mentions" class="legal-content active">
+        <h3>Mentions Légales & CGU</h3>
+        <div class="meta">En vigueur au : 7 septembre 2026 · Landing Page Proovio</div>
+        <p><strong>Important :</strong> Conformément à la stratégie d'exploitation du service Proovio, l'accès direct à la plateforme SaaS applicative est actuellement réservé aux accès clients soumis à un contrat spécifique (incluant un DPA / Contrat de sous-traitance des données selon l'art. 28 du RGPD). Les présentes Mentions Légales et Conditions Générales d'Utilisation régissent de manière exclusive la consultation, la navigation et l'utilisation du site vitrine (« Landing Page ») accessible à l'adresse <strong>proovio.fr</strong>, et la sollicitation de démonstrations.</p>
+        
+        <h4>1. Mentions légales (loi n° 2004-575 LCEN)</h4>
+        <h5>1.1. Éditeur du site</h5>
+        <table class="legal-table">
+          <tr><th>Dénomination sociale</th><td>Dakrea (Proovio)</td></tr>
+          <tr><th>Forme juridique</th><td>Entrepreneur individuel — micro-entreprise</td></tr>
+          <tr><th>SIREN / SIRET</th><td>853 232 528 / 853 232 528 00028</td></tr>
+          <tr><th>Siège social</th><td>Bureau 326, 59 rue de Ponthieu, 75008 Paris</td></tr>
+          <tr><th>Activité</th><td>Conseil en systèmes et logiciels informatiques</td></tr>
+          <tr><th>Directeur de la publication</th><td>M. Lemy Dilukeba (dirigeant)</td></tr>
+          <tr><th>Contact</th><td>contact@proovio.fr · +33 1 89 62 34 50</td></tr>
+          <tr><th>TVA</th><td>TVA non applicable, art. 293 B du CGI</td></tr>
+        </table>
+
+        <h5>1.2. Hébergeur du site</h5>
+        <table class="legal-table">
+          <tr><th>Hébergeur</th><td>Hostinger International Limited</td></tr>
+          <tr><th>Adresse</th><td>61 Lordou Vyronos, Lumiel Building, 4th floor, 6023 Larnaca, Chypre</td></tr>
+          <tr><th>Site web</th><td>www.hostinger.fr</td></tr>
+          <tr><th>Localisation serveurs</th><td>Union Européenne</td></tr>
+        </table>
+
+        <h5>1.3. Outils de mesure d'audience et cookies</h5>
+        <p>Afin de garantir un respect de la vie privée dès la conception (Privacy by Design), le site landing page Proovio utilise exclusivement une solution d'analyse d'audience exemptée de consentement préalable (anonymisation avancée d'IP), conformément aux recommandations de la CNIL. Aucun cookie tiers à des fins de ciblage publicitaire n'est déposé.</p>
+
+        <h4>2. Conditions Générales d'Utilisation (CGU)</h4>
+        <p>Le site landing page Proovio a pour vocation de présenter la solution Proovio (horodatage, géolocalisation et contrôle d'authenticité de preuves terrain), de fournir les grilles indicatives et de permettre la réservation de démonstrations.</p>
+        <p><strong>Propriété intellectuelle :</strong> L'ensemble des éléments constituant le site (textes, graphismes, logos, codes) sont la propriété exclusive de Dakrea. Toute reproduction sans autorisation écrite est strictement interdite.</p>
+      </div>
+
+      <!-- Section Confidentialité -->
+      <div id="modal-content-confidentialite" class="legal-content">
+        <h3>Politique de Confidentialité</h3>
+        <div class="meta">En vigueur au : 7 septembre 2026 · Conformité RGPD</div>
+        <p>La présente Politique s'applique de manière exclusive aux données à caractère personnel collectées via la Landing Page <strong>proovio.fr</strong> et son formulaire de demande de démonstration.</p>
+
+        <h4>1. Données personnelles collectées</h4>
+        <table class="legal-table">
+          <tr><th>Nom & Prénom</th><td>Identité professionnelle du contact (Obligatoire)</td></tr>
+          <tr><th>Nom de l'entreprise</th><td>Organisation prospectée (Obligatoire)</td></tr>
+          <tr><th>E-mail & Téléphone</th><td>Coordonnées de contact direct professionnel (Obligatoire)</td></tr>
+          <tr><th>Consentement</th><td>Preuve de consentement univoque (Obligatoire)</td></tr>
+        </table>
+
+        <h4>2. Finalités du traitement & Bases légales</h4>
+        <ul>
+          <li><strong>Organisation de la démo :</strong> Planification et présentation personnalisée de 20 min (Mesures précontractuelles art. 6.1.b).</li>
+          <li><strong>Prospection B2B :</strong> Envoi d'informations complémentaires (Consentement art. 6.1.a & Intérêt légitime art. 6.1.f).</li>
+          <li><strong>Statistiques d'audience :</strong> Mesure de fréquentation anonymisée (Intérêt légitime art. 6.1.f).</li>
+        </ul>
+
+        <h4>3. Sécurité et Destinataires</h4>
+        <p>Les données sont strictement réservées à l'équipe interne de Dakrea et ne sont <strong>jamais revendues ni cédées</strong> à des tiers. Les flux sont sécurisés via chiffrement TLS 1.3 et les bases sont chiffrées en AES-256.</p>
+
+        <h4>4. Vos droits</h4>
+        <p>Vous disposez des droits d'accès, rectification, effacement, opposition et portabilité. Contact : <strong>contact@proovio.fr</strong> ou par courrier à <em>Dakrea – Bureau 326, 59 rue de Ponthieu, 75008 Paris</em>.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -506,24 +579,23 @@
   }, {threshold:0.15});
   els.forEach(el=>io.observe(el));
 
-  const DOCS = {
-    mentions: {
-      title: "Mentions Légales & CGU — Proovio",
-      url: "politique/Mentions_Legales_CGU_Proovio.pdf"
-    },
-    confidentialite: {
-      title: "Politique de Confidentialité — Proovio",
-      url: "politique/Politique_Confidentialite_Proovio.pdf"
-    }
+  const DOCS_PDF = {
+    mentions: "politique/Mentions_Legales_CGU_Proovio.pdf",
+    confidentialite: "politique/Politique_Confidentialite_Proovio.pdf"
   };
+
+  function switchDocTab(key) {
+    document.getElementById('modal-tab-mentions').classList.toggle('active', key === 'mentions');
+    document.getElementById('modal-tab-confidentialite').classList.toggle('active', key === 'confidentialite');
+    document.getElementById('modal-content-mentions').classList.toggle('active', key === 'mentions');
+    document.getElementById('modal-content-confidentialite').classList.toggle('active', key === 'confidentialite');
+    document.getElementById('legal-modal-pdf').href = DOCS_PDF[key];
+    document.querySelector('.legal-modal-body').scrollTop = 0;
+  }
 
   function openDocModal(key, event) {
     if (event) event.preventDefault();
-    const doc = DOCS[key];
-    if (!doc) return;
-    document.getElementById('legal-modal-title').textContent = doc.title;
-    document.getElementById('legal-modal-external').href = doc.url;
-    document.getElementById('legal-modal-iframe').src = doc.url;
+    switchDocTab(key || 'mentions');
     const modal = document.getElementById('legal-modal');
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -532,7 +604,6 @@
   function closeDocModal() {
     const modal = document.getElementById('legal-modal');
     modal.classList.remove('open');
-    document.getElementById('legal-modal-iframe').src = '';
     document.body.style.overflow = '';
   }
 
